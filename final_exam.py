@@ -1,12 +1,31 @@
 """
-STRUCTURED ENGLISH
+PSUEDOCODE
 
-Open final.txt
-Read and print the number of grades in the text file
-Calculate and print the average of the grades
-Find the number of grades that are above the average we just calculated
-Divide this count by the total number of grades to find the percent that are above the average
-Print this percentage to user
+infile = final.txt
+infile.open()
 
-END STRUCTURED ENGLISH
+grades = [line.rstrip() for line in infile]
+
+infile.close()
+
+gradesLength = len(grades)
+
+print(gradesLength)
+
+for grade in grades:
+    sum += grade
+
+average = sum / gradesLength
+
+print(average)
+
+for grade in grades:
+    if grade > average:
+        counter += 1
+
+percentAbove = counter / gradesLength
+
+print(percentAbove)
+
+END PSUEDOCODE
 """
