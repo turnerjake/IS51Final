@@ -1,31 +1,35 @@
-"""
-PSUEDOCODE
+def main():
+    #Open File
+    inFile = {}
+    try:
+        inFile = open('Final.txt', 'r')
+    except FileNotFoundError:
+        print("ERROR! Couldn't find your grades file. Please check it exists in the current directory.")
+        exit()
+    
+    tempGrades = [line.rstrip() for line in inFile]
+    grades = [int(i) for i in tempGrades]
 
-infile = final.txt
-infile.open()
+    #Get number of grades
+    gradesLength = len(grades)
 
-grades = [line.rstrip() for line in infile]
+    if gradesLength > 0:
+        print("Number of grades: ", gradesLength)
+        #Calculate average
+        averageScore = sum(grades) / gradesLength
+        print(("Average score is: {0:.2f}").format(averageScore))
 
-infile.close()
+        calculate_percent_above_average(grades, gradesLength, averageScore)
+    else:
+        print("Grades list should not be empty!")
+        exit()
+    
+def calculate_percent_above_average(grades, gradesLength, averageScore):
+    counter = 0
+    for i, val in enumerate(grades):
+        if val > averageScore:
+            counter += 1
+    percent_above_average = counter / gradesLength
+    print(("Percent of scores above average is: {0:.2%}").format(percent_above_average))
 
-gradesLength = len(grades)
-
-print(gradesLength)
-
-for grade in grades:
-    sum += grade
-
-average = sum / gradesLength
-
-print(average)
-
-for grade in grades:
-    if grade > average:
-        counter += 1
-
-percentAbove = counter / gradesLength
-
-print(percentAbove)
-
-END PSUEDOCODE
-"""
+main()
